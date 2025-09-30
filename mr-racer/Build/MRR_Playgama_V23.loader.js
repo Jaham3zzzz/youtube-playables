@@ -327,8 +327,11 @@ function createUnityInstance(t, n, d) {
     ,
     l.fetchWithProgress = function(e, t) {
         var n = function() {};
+        if (e.includes('StreamingAssets/')) {
+            e = 'StreamingAssets/'+e.split('StreamingAssets/')[1];
+        }
         return t && t.onProgress && (n = t.onProgress),
-        fetch(e.includes("settings.json") ? 'StreamingAssets/aa/settings.json' : e, t).then(function(e) {
+        fetch(e, t).then(function(e) {
             return l.readBodyWithProgress(e, n, t.enableStreamingDownload)
         })
     }
