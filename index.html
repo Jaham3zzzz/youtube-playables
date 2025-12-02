@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>YouTube Playables – Game Launcher</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: #111;
+        color: white;
+        margin: 0;
+        padding: 20px;
+        text-align: center;
+    }
+    h1 {
+        margin-bottom: 20px;
+    }
+    #games {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+        margin-top: 20px;
+    }
+    .game-btn {
+        padding: 12px 18px;
+        background: #222;
+        color: white;
+        border: 2px solid #444;
+        border-radius: 8px;
+        font-size: 16px;
+        cursor: pointer;
+        width: 220px;
+        text-align: center;
+        transition: 0.15s;
+    }
+    .game-btn:hover {
+        background: #444;
+        border-color: #888;
+    }
+</style>
+</head>
+<body>
+
+<h1>YouTube Playables Collection</h1>
+<p>Select a game to play:</p>
+
+<div id="games">Loading games…</div>
+
+<script>
+// List of ALL game folders in your repo
+// Pulled from the directory list you provided
+const gameFolders = [
+"3d-bowling","8-ball-classic","99-balls-3d","amaze","angry-birds-showdown",
+"aquapark-io","archery-world-tour","attack-hole","ball-blast","basket-battle",
+"basketball-frvr","bazooka-boy","bolly-beat","bottle-jump-3d","bouncemasters",
+"bowmasters","bridge-race","build-a-queen","cannon-balls-3d","carrom-clash",
+"chess-classic","city-smash","color-burst-3d","color-match","color-water-sort-3d",
+"crossy-road","dig-deep","draw-the-line","fashion-battle","fill-the-fridge",
+"find-the-alien","flappy dunk","fork-n-sausage","freekick-football","go-escape",
+"guess-their-answer","gym-stack","harvest-io","hide-n-seek","hill-climb-racing-lite",
+"kitchen-bazar","magic-tiles-3","maze-speedrun","mob-control-html5","mr-racer",
+"om-nom-run","pac-man-superfast","parking-rush","pokey-ball","pou","race-master-3d",
+"room-sort","scooter-xtreme","slice-it-all","slime-io","soccer-dash","solar-smash",
+"stacky-dash","state io","stealth-master","supreme-duelist","sushi-roll",
+"sword-play","table-tennis","tall-man-run","texas-holdem","tiletopia","tower-crash-3d",
+"trivia-crack","turbo-stars"
+];
+
+const gameList = document.getElementById("games");
+
+gameList.innerHTML = ""; // clear "Loading…"
+
+// Build button for each game
+gameFolders.forEach(folder => {
+    const btn = document.createElement("button");
+    btn.className = "game-btn";
+    btn.textContent = folder.replace(/-/g, " ").toUpperCase();
+    btn.onclick = () => {
+        window.location.href = folder + "/index.html";
+    };
+    gameList.appendChild(btn);
+});
+</script>
+
+</body>
+</html>
